@@ -3,7 +3,7 @@ import { wmoCode } from "./wmoCodes";
 
 interface DailyWeather {
   datetime: string;
-  weatherCode: string;
+  weatherCode: number;
   temperature2mMean: number;
   daylightDuration: number;
   precipitationSum: number;
@@ -62,18 +62,11 @@ export const getWeather = async (): Promise<DailyWeather[]> => {
   for (let i = 0; i < weatherData.daily.time.length; i++) {
     dailyWeather.push({
       datetime: weatherData.daily.time[i].toISOString(),
-      weatherCode: wmoCode[weatherData.daily.weatherCode[i]],
+      weatherCode: weatherData.daily.weatherCode[i], // WMO code
       temperature2mMean: weatherData.daily.temperature2mMean[i], // degrees celcius
-      daylightDuration: weatherData.daily.daylightDuration[i],
+      daylightDuration: weatherData.daily.daylightDuration[i], // seconds
       precipitationSum: weatherData.daily.precipitationSum[i] // millimetres
     });
-    console.log(
-      weatherData.daily.time[i].toISOString(),
-      wmoCode[weatherData.daily.weatherCode[i]],
-      weatherData.daily.temperature2mMean[i], // degrees celcius
-      weatherData.daily.daylightDuration[i],
-      weatherData.daily.precipitationSum[i] // millimetres
-    );
   }
 
   return dailyWeather;
