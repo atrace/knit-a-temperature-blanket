@@ -1,8 +1,18 @@
-import { getWeather } from "./openmeteo";
+import { getWeather } from "./lib/openmeteo";
 
-const calculateKnitting = (): string => {
-  getWeather();
-  return "here is a pattern";
+const printWeatherRows = async () => {
+  const dailyWeather = await getWeather();
+
+  return dailyWeather.map((todaysWeather) => (
+    <div key={todaysWeather.datetime}>
+      <text>
+        {todaysWeather.datetime} {todaysWeather.weatherCode}
+        {todaysWeather.temperature2mMean} {todaysWeather.daylightDuration}
+        {todaysWeather.precipitationSum}
+      </text>
+      <br />
+    </div>
+  ));
 };
 
 export default function Home() {
@@ -11,7 +21,7 @@ export default function Home() {
       <text>Hello world</text>
       <br />
       <br />
-      <text>{calculateKnitting()}</text>
+      {printWeatherRows()}
     </main>
   );
 }

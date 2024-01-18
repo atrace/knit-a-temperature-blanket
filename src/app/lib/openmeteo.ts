@@ -1,7 +1,15 @@
 import { fetchWeatherApi } from "openmeteo";
 import { wmoCode } from "./wmoCodes";
 
-export const getWeather = async () => {
+interface DailyWeather {
+  datetime: string;
+  weatherCode: string;
+  temperature2mMean: number;
+  daylightDuration: number;
+  precipitationSum: number;
+}
+
+export const getWeather = async (): Promise<DailyWeather[]> => {
   const params = {
     latitude: 53.9566,
     longitude: -1.0774,
@@ -49,8 +57,16 @@ export const getWeather = async () => {
     }
   };
 
-  // `weatherData` now contains a simple structure with arrays for datetime and weather data
+  const dailyWeather = [];
+
   for (let i = 0; i < weatherData.daily.time.length; i++) {
+    dailyWeather.push({
+      datetime: weatherData.daily.time[i].toISOString(),
+      weatherCode: wmoCode[weatherData.daily.weatherCode[i]],
+      temperature2mMean: weatherData.daily.temperature2mMean[i], // degrees celcius
+      daylightDuration: weatherData.daily.daylightDuration[i],
+      precipitationSum: weatherData.daily.precipitationSum[i] // millimetres
+    });
     console.log(
       weatherData.daily.time[i].toISOString(),
       wmoCode[weatherData.daily.weatherCode[i]],
@@ -59,4 +75,6 @@ export const getWeather = async () => {
       weatherData.daily.precipitationSum[i] // millimetres
     );
   }
+
+  return dailyWeather;
 };
