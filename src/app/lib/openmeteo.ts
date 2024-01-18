@@ -2,7 +2,7 @@ import { fetchWeatherApi } from "openmeteo";
 import { wmoCode } from "./wmoCodes";
 
 interface DailyWeather {
-  datetime: string;
+  datetime: Date;
   weatherCode: number;
   temperature2mMean: number;
   daylightDuration: number;
@@ -61,7 +61,7 @@ export const getWeather = async (): Promise<DailyWeather[]> => {
 
   for (let i = 0; i < weatherData.daily.time.length; i++) {
     dailyWeather.push({
-      datetime: weatherData.daily.time[i].toISOString(),
+      datetime: weatherData.daily.time[i],
       weatherCode: weatherData.daily.weatherCode[i], // WMO code
       temperature2mMean: weatherData.daily.temperature2mMean[i], // degrees celcius
       daylightDuration: weatherData.daily.daylightDuration[i], // seconds
