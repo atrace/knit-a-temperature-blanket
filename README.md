@@ -4,13 +4,15 @@ Generates a knitting pattern for a blanket with colours based on the recent temp
 
 ![Alt text](./public/temperature_blanket_and_demo_key.png)
 
-## NextJS boilerplate
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+This is deployed on push to `main` using vercel at https://knit-a-temperature-blanket.vercel.app/
+
+
 ### Getting Started
 
-First, run the development server:
+To run the development server:
 
 ```bash
 npm run dev
@@ -18,30 +20,12 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `src/app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-### Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-### Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
 ## To do
 
 - [x] CLI-based fixed calculator
 - [x] Create react front end to display fixed text results
-- [ ] Host this front end for public access
+- [x] Host this front end for public access
 - [ ] Key creator configuration
     - [ ] Allow users to enter their own colours
     - [ ] Allow users to enter their own temperature ranges
@@ -54,6 +38,12 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 - [ ] Save selected config to local storage for users to return to and refresh later in the year
 - [ ] Add line of previous progress e.g. already knitted january, just focus on pattern for feb - march.
 
+
+### Sneak Peek
+
+![Alt text](public/sneak_peek.png)
+
+
 ## Resources
 
 This project was built with NextJS following the following guides:
@@ -63,3 +53,6 @@ This project was built with NextJS following the following guides:
 - Next JS App Router https://nextjs.org/docs/app#are-there-any-comprehensive-open-source-applications-built-on-the-app-router
 - Get started with NextJS https://nextjs.org/learn/dashboard-app/getting-started
 - Weather API - OpenMeteo https://open-meteo.com/en/docs/historical-weather-api#latitude=53.9566&longitude=-1.0774&start_date=2024-01-01&end_date=2024-01-18&hourly=&daily=weather_code,temperature_2m_mean,daylight_duration,precipitation_sum&timezone=Europe%2FLondon
+- When some git surgery was required https://gist.github.com/amalmurali47/77e8dc1f27c791729518701d2dec3680
+- Deploying with Vercel https://nextjs.org/docs/deployment
+- Vercel project dashboard: https://vercel.com/atraces-projects/knit-a-temperature-blanket
