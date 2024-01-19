@@ -1,6 +1,6 @@
 # knit-a-temperature-blanket
 
-Generates a knitting pattern for a blanket with colours based on the recent temperature in your area. Uses Node v20.11.0
+Generates a knitting pattern for a blanket with colours based on the recent temperature in your area. Built with Node v20.11.0
 
 ![Alt text](./public/temperature_blanket_and_demo_key.png)
 
@@ -39,8 +39,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## To do
 
-- [ ] CLI-based fixed calculator
-- [ ] Create react front end to display fixed text results
+- [x] CLI-based fixed calculator
+- [x] Create react front end to display fixed text results
 - [ ] Host this front end for public access
 - [ ] Key creator configuration
     - [ ] Allow users to enter their own colours
