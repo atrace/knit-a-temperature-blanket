@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pattern renders a knitting pattern 1`] = `
+<div>
+  <h2>
+    Date Temperature
+  </h2>
+  <table>
+    <tbody>
+      <tr>
+        <td>
+          Apr 06
+        </td>
+        <td>
+          (
+          20
+          °C)
+        </td>
+        <td
+          style="background-color: gold; width: 200px;"
+        />
+        <td
+          style="margin-left: 4px; display: flex;"
+        >
+          <p>
+            knit 1 row of
+          </p>
+          <p
+            style="margin-left: 4px; color: gold;"
+          >
+            gold
+          </p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;

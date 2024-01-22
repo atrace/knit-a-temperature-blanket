@@ -27,8 +27,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - [x] Create react front end to display fixed text results
 - [x] Host this front end for public access
 - [ ] Key creator configuration
-    - [ ] Allow users to enter their own colours
+    - [ ] Allow users to enter their own colours -- next?
     - [ ] Allow users to enter their own temperature ranges
+    - [x] Get most current weather (no fixed date range)
     - [ ] Allow users to enter their own location to fetch weather from
     - [ ] Allow users to enter their own stitches per row e.g. knit 1 row, purl 1 row.
 - [ ] Display pattern result alongside pretty colour visualisation of blanket
@@ -56,3 +57,6 @@ This project was built with NextJS following the following guides:
 - When some git surgery was required https://gist.github.com/amalmurali47/77e8dc1f27c791729518701d2dec3680
 - Deploying with Vercel https://nextjs.org/docs/deployment
 - Vercel project dashboard: https://vercel.com/atraces-projects/knit-a-temperature-blanket
+- Testing help https://echobind.com/post/how-to-mock-using-jest-spyon-part-2-3
+- Getting started with jest and TS https://jestjs.io/docs/getting-started#using-typescript
+- Refreshing flexbox https://flexboxfroggy.com/

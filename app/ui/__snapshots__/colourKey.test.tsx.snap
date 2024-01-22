@@ -1,0 +1,175 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ColourKey renders a colour key 1`] = `
+<div>
+  <h2>
+    Temperature colour key
+  </h2>
+  <table>
+    <tbody>
+      <tr>
+        <td
+          style="text-align: right;"
+        >
+          below
+        </td>
+        <td>
+           - 
+        </td>
+        <td>
+          -2
+        </td>
+        <td
+          style="color: midnightblue;"
+        >
+          midnightblue
+        </td>
+      </tr>
+      <tr>
+        <td
+          style="text-align: right;"
+        >
+          -1
+        </td>
+        <td>
+           - 
+        </td>
+        <td>
+          0
+        </td>
+        <td
+          style="color: blue;"
+        >
+          blue
+        </td>
+      </tr>
+      <tr>
+        <td
+          style="text-align: right;"
+        >
+          1
+        </td>
+        <td>
+           - 
+        </td>
+        <td>
+          5
+        </td>
+        <td
+          style="color: green;"
+        >
+          green
+        </td>
+      </tr>
+      <tr>
+        <td
+          style="text-align: right;"
+        >
+          6
+        </td>
+        <td>
+           - 
+        </td>
+        <td>
+          10
+        </td>
+        <td
+          style="color: greenyellow;"
+        >
+          greenyellow
+        </td>
+      </tr>
+      <tr>
+        <td
+          style="text-align: right;"
+        >
+          11
+        </td>
+        <td>
+           - 
+        </td>
+        <td>
+          15
+        </td>
+        <td
+          style="color: lemonchiffon;"
+        >
+          lemonchiffon
+        </td>
+      </tr>
+      <tr>
+        <td
+          style="text-align: right;"
+        >
+          16
+        </td>
+        <td>
+           - 
+        </td>
+        <td>
+          20
+        </td>
+        <td
+          style="color: gold;"
+        >
+          gold
+        </td>
+      </tr>
+      <tr>
+        <td
+          style="text-align: right;"
+        >
+          21
+        </td>
+        <td>
+           - 
+        </td>
+        <td>
+          25
+        </td>
+        <td
+          style="color: orange;"
+        >
+          orange
+        </td>
+      </tr>
+      <tr>
+        <td
+          style="text-align: right;"
+        >
+          26
+        </td>
+        <td>
+           - 
+        </td>
+        <td>
+          30
+        </td>
+        <td
+          style="color: firebrick;"
+        >
+          firebrick
+        </td>
+      </tr>
+      <tr>
+        <td
+          style="text-align: right;"
+        >
+          31
+        </td>
+        <td>
+           - 
+        </td>
+        <td>
+          above
+        </td>
+        <td
+          style="color: maroon;"
+        >
+          maroon
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;

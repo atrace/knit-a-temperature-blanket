@@ -13,24 +13,30 @@ export default function Pattern({
 
     const colour = getColourForTemperature(todaysWeather.temperature2mMean);
 
+    // Most recent 2 days come back as NaN :thonk:
+    if (!todaysWeather.temperature2mMean) return;
+
     return (
-      <div key={date}>
-        <text>{date}</text>
-        {"  "}
-        <text>
-          ({todaysWeather.temperature2mMean.toFixed()}°C) knit 1 row of
-        </text>
-        {"  "}
-        <text style={{ color: colour }}>{colour}</text>
-        <br />
-      </div>
+      <tr key={date}>
+        <td>{date}</td>
+        <td>({todaysWeather.temperature2mMean.toFixed()}°C)</td>
+
+        <td style={{ backgroundColor: colour, width: 200 }}></td>
+
+        <td style={{ marginLeft: 4, display: "flex" }}>
+          <p>knit 1 row of</p>
+          <p style={{ marginLeft: 4, color: colour }}>{colour}</p>
+        </td>
+      </tr>
     );
   });
 
   return (
     <>
-      <text>Date</text> <text>Temperature</text>
-      {rows}
+      <h2>Date Temperature</h2>
+      <table>
+        <tbody>{rows}</tbody>
+      </table>
     </>
   );
 }

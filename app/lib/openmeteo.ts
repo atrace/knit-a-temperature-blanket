@@ -2,18 +2,21 @@ import { fetchWeatherApi } from "openmeteo";
 
 export interface DailyWeather {
   datetime: Date;
-  weatherCode: number;
-  temperature2mMean: number;
-  daylightDuration: number;
-  precipitationSum: number;
+  weatherCode: number; // WMO code
+  temperature2mMean: number; // degrees celcius
+  daylightDuration: number; // seconds
+  precipitationSum: number; // millimetres
 }
 
 export const getWeather = async (): Promise<DailyWeather[]> => {
+  const startDate = `${new Date().getFullYear()}-01-01`;
+  const endDate = new Date().toISOString().slice(0, 10);
+
   const params = {
     latitude: 53.9566,
     longitude: -1.0774,
-    start_date: "2024-01-01",
-    end_date: "2024-01-18",
+    start_date: startDate,
+    end_date: endDate,
     daily: [
       "weather_code",
       "temperature_2m_mean",
@@ -31,6 +34,7 @@ export const getWeather = async (): Promise<DailyWeather[]> => {
 
   // Process first location. Add a for-loop for multiple locations or weather models
   const response = responses[0];
+  if (!response) return [];
 
   // Attributes for timezone and location
   const utcOffsetSeconds = response.utcOffsetSeconds();
@@ -39,7 +43,9 @@ export const getWeather = async (): Promise<DailyWeather[]> => {
   const latitude = response.latitude();
   const longitude = response.longitude();
 
-  const daily = response.daily()!;
+  const daily = response.daily();
+  if (!daily) return [];
+ 
 
   // Note: The order of weather variables in the URL query and the indices below need to match!
   const weatherData = {

@@ -1,3 +1,4 @@
+import React from "react";
 import { temperatureRange } from "../lib/getColourForTemperature";
 
 export default function ColourKey() {
