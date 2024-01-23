@@ -1,7 +1,6 @@
-import React from "react";
+import { getWeather } from "./lib/openmeteo";
 import ColourKey from "./ui/colourKey";
 import Pattern from "./ui/pattern";
-import { getWeather } from "./lib/openmeteo";
 
 export default async function Home() {
   const dailyWeather = await getWeather();

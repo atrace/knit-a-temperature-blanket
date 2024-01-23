@@ -60,3 +60,13 @@ This project was built with NextJS following the following guides:
 - Testing help https://echobind.com/post/how-to-mock-using-jest-spyon-part-2-3
 - Getting started with jest and TS https://jestjs.io/docs/getting-started#using-typescript
 - Refreshing flexbox https://flexboxfroggy.com/
+
+
+
+
+### Credit & attributions
+
+- [Yarn sample icons](https://commons.wikimedia.org/wiki/File:Cow_hitch.svg) - Whidou, CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0>, via Wikimedia Commons
+
+- SVG to react component converter https://react-svgr.com/playground/
+- supersan for a simple HEX colour darkener https://stackoverflow.com/a/57401891
