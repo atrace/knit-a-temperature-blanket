@@ -5,19 +5,15 @@ import ColourKeyRow from "./colourKeyRow";
 
 interface ColourKeyProps {
   temperatureRange: TemperatureRange[];
-  setColourForRange: (range: TemperatureRange, colour: string) => void;
+  updateRange: (
+    range: TemperatureRange,
+    newValues: Partial<TemperatureRange>,
+  ) => void;
 }
 
-export default function ColourKey({
-  temperatureRange,
-  setColourForRange,
-}: ColourKeyProps) {
+export default function ColourKey({ temperatureRange, updateRange }: ColourKeyProps) {
   const rows = temperatureRange.map((range) => (
-    <ColourKeyRow
-      key={range.min}
-      range={range}
-      setColourForRange={setColourForRange}
-    />
+    <ColourKeyRow key={range.min} range={range} updateRange={updateRange} />
   ));
 
   return (

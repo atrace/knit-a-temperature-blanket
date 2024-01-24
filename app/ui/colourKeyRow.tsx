@@ -7,14 +7,14 @@ import CowHitch from "./CowHitchIcon";
 
 interface ColourKeyRowProps {
   range: TemperatureRange;
-  setColourForRange: (range: TemperatureRange, colour: string) => void;
+  updateRange: (
+    range: TemperatureRange,
+    newValues: Partial<TemperatureRange>,
+  ) => void;
 }
 
-export default function ColourKeyRow({
-  range,
-  setColourForRange,
-}: ColourKeyRowProps) {
-  const [hideColourPicker, setHideColourPicker] = useState(true);
+export default function ColourKeyRow({ range, updateRange }: ColourKeyRowProps) {
+  const [editingRange, setEditingRange] = useState(false);
 
   const defaultStyle = {
     backgroundColor: "white",
@@ -48,7 +48,10 @@ export default function ColourKeyRow({
           {range.colourName}
         </td>
         <td style={defaultStyle}>
-          <button onClick={() => setHideColourPicker(!hideColourPicker)}>
+          <button
+            style={{ textDecoration: "underline dotted" }}
+            onClick={() => setEditingRange(!editingRange)}
+          >
             edit
           </button>
         </td>
@@ -60,15 +63,29 @@ export default function ColourKeyRow({
           />
         </td>
       </tr>
-      {hideColourPicker ? null : (
-        <tr>
+      {editingRange ? (
+        <div style={{ display: "flex" }}>
           <HexColorPicker
             color={range.colour}
-            onChange={(newColour) => setColourForRange(range, newColour)}
+            onChange={(newColour) => updateRange(range, { colour: newColour })}
           />
-          {/* <input onChange={() =>{}}></input> */}
-        </tr>
-      )}
+          <div>
+            <p>choose a new colour name:</p>
+            <input
+              onChange={({ target }) =>
+                updateRange(range, { colourName: target.value })
+              }
+              style={{
+                ...defaultStyle,
+                borderStyle: "solid",
+                borderWidth: 1,
+                borderColor: range.colour,
+              }}
+              value={range.colourName}
+            />
+          </div>
+        </div>
+      ) : null}
     </>
   );
 }

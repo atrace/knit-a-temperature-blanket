@@ -27,7 +27,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - [x] Create react front end to display fixed text results
 - [x] Host this front end for public access
 - [ ] Key creator configuration
-    - [ ] Allow users to enter their own colours -- next?
+    - [x] Allow users to enter their own colours and names
     - [ ] Allow users to enter their own temperature ranges
     - [x] Get most current weather (no fixed date range)
     - [ ] Allow users to enter their own location to fetch weather from

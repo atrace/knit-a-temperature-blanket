@@ -17,10 +17,13 @@ export default function Home({
     defaultTemperatureRange,
   );
 
-  const setColourForRange = (range: TemperatureRange, colour: string) => {
+  const updateRange = (
+    range: TemperatureRange,
+    newValues: Partial<TemperatureRange>,
+  ) => {
     const newTempRange = temperatureRange.map((current) => {
       if (current.min === range.min) {
-        return { ...range, colour };
+        return { ...range, ...newValues };
       }
       return current;
     });
@@ -33,7 +36,7 @@ export default function Home({
       <br />
       <ColourKey
         temperatureRange={temperatureRange}
-        setColourForRange={setColourForRange}
+        updateRange={updateRange}
       />
       <br />
       <Pattern
