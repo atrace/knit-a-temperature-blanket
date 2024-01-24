@@ -1,20 +1,28 @@
 import React from "react";
-import { getColourForTemperature } from "../lib/getColourForTemperature";
+import {
+  TemperatureRange,
+  getColourForTemperature,
+} from "../lib/getColourForTemperature";
 import { DailyWeather } from "../lib/openmeteo";
 
 export default function Pattern({
-  dailyWeather
+  dailyWeather,
+  temperatureRange,
 }: {
   dailyWeather: DailyWeather[];
+  temperatureRange: TemperatureRange[];
 }) {
   //TODO:  Make text item generator generic to allow extra fields to be added easily
   const rows = dailyWeather.map((todaysWeather) => {
-    const date = todaysWeather.datetime.toDateString().slice(4, 10);
-
-    const colour = getColourForTemperature(todaysWeather.temperature2mMean);
-
     // Most recent 2 days come back as NaN :thonk:
     if (!todaysWeather.temperature2mMean) return;
+
+    const date = todaysWeather.datetime.toDateString().slice(4, 10);
+
+    const { colour, colourName } = getColourForTemperature(
+      temperatureRange,
+      todaysWeather.temperature2mMean,
+    );
 
     return (
       <tr key={date}>
@@ -25,7 +33,7 @@ export default function Pattern({
 
         <td style={{ marginLeft: 4, display: "flex" }}>
           <p>knit 1 row of</p>
-          <p style={{ marginLeft: 4, color: colour }}>{colour}</p>
+          <p style={{ marginLeft: 4, color: colour }}>{colourName}</p>
         </td>
       </tr>
     );

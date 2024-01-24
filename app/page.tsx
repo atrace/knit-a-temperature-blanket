@@ -1,17 +1,12 @@
 import { getWeather } from "./lib/openmeteo";
-import ColourKey from "./ui/colourKey";
-import Pattern from "./ui/pattern";
+import Home from "./ui/Home";
 
-export default async function Home() {
+export default async function HomePage() {
   const dailyWeather = await getWeather();
 
   return (
     <main>
-      <h1>Knit a temperature blanket</h1>
-      <br />
-      <ColourKey />
-      <br />
-      <Pattern dailyWeather={dailyWeather} />
+      <Home dailyWeather={dailyWeather} />
     </main>
   );
 }
