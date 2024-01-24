@@ -17,8 +17,12 @@ export default function ColourKeyRow({ range, updateRange }: ColourKeyRowProps) 
   const [editingRange, setEditingRange] = useState(false);
 
   const defaultStyle = {
-    backgroundColor: "white",
+    // backgroundColor: "white",
     color: "black",
+    backgroundColor: "lightblue",
+    // textAlign: "center",
+    padding: "20px 0",
+    // fontSize: 30,
   };
 
   const min = range.min == -1000 ? "below" : range.min;
@@ -26,50 +30,65 @@ export default function ColourKeyRow({ range, updateRange }: ColourKeyRowProps) 
 
   return (
     <>
-      <tr key={min}>
-        <td
+      <div
+        key={`grid-container-${min}`}
+        style={{
+          display: "grid",
+          gridTemplateColumns: "auto auto auto auto auto auto",
+          gap: 10,
+          backgroundColor: "#2196F3",
+          padding: 10,
+        }}
+      >
+        <div
           style={{
             textAlign: "right",
             ...defaultStyle,
           }}
         >
           {min}
-        </td>
-        <td style={defaultStyle}> - </td>
-        <td
-          style={{
-            backgroundColor: "white",
-            color: "black",
-          }}
-        >
-          {max}
-        </td>
-        <td style={{ ...defaultStyle, color: range.colour }}>
+        </div>
+        <div style={defaultStyle}> - </div>
+        <div style={defaultStyle}>{max}</div>
+        <div style={{ ...defaultStyle, color: range.colour }}>
           {range.colourName}
-        </td>
-        <td style={defaultStyle}>
+        </div>
+        <div style={defaultStyle}>
           <button
             style={{ textDecoration: "underline dotted" }}
             onClick={() => setEditingRange(!editingRange)}
           >
             edit
           </button>
-        </td>
-        <td style={{ padding: 0 }}>
+        </div>
+        <div style={{ padding: 0 }}>
           <CowHitch
             backgroundColour={defaultStyle.backgroundColor}
             yarnColour={range.colour}
             height={32}
           />
-        </td>
-      </tr>
+        </div>
+      </div>
       {editingRange ? (
-        <div style={{ display: "flex" }}>
+        <div
+          key={`grid-container`}
+          style={{
+            display: "grid",
+            gridTemplateAreas: "'colourPicker editColourName'",
+            gap: 15,
+            backgroundColor: "#2196F3",
+            padding: 10,
+          }}
+        >
           <HexColorPicker
             color={range.colour}
             onChange={(newColour) => updateRange(range, { colour: newColour })}
+            style={{
+              gridArea: "colourPicker",
+              justifySelf: "self-end",
+            }}
           />
-          <div>
+          <div style={{ gridArea: "editColourName" }}>
             <p>choose a new colour name:</p>
             <input
               onChange={({ target }) =>
@@ -80,6 +99,7 @@ export default function ColourKeyRow({ range, updateRange }: ColourKeyRowProps) 
                 borderStyle: "solid",
                 borderWidth: 1,
                 borderColor: range.colour,
+                padding: 7,
               }}
               value={range.colourName}
             />

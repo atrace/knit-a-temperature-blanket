@@ -19,9 +19,8 @@ export default function ColourKey({ temperatureRange, updateRange }: ColourKeyPr
   return (
     <>
       <h2>Temperature colour key</h2>
-      <table>
-        <tbody>{rows}</tbody>
-      </table>
+
+      {rows}
     </>
   );
 }
