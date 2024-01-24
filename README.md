@@ -42,7 +42,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ### Sneak Peek
 
-![Alt text](public/sneak_peek.png)
+![Screenshot of the web app running locally](public/sneak_peek.png)
 
 
 ## Resources

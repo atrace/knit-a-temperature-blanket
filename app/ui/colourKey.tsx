@@ -11,16 +11,48 @@ interface ColourKeyProps {
   ) => void;
 }
 
-export default function ColourKey({ temperatureRange, updateRange }: ColourKeyProps) {
-  const rows = temperatureRange.map((range) => (
-    <ColourKeyRow key={range.min} range={range} updateRange={updateRange} />
+export const getGridTemplate = (rowCount: number) => {
+  let gridTemplate = "";
+  let rowIndex = 0;
+
+  while (rowIndex < rowCount) {
+    gridTemplate +=
+      `'minimum-${rowIndex} to-${rowIndex} maximum-${rowIndex} colourName-${rowIndex} editButton-${rowIndex} yarnSwatch-${rowIndex}' ` +
+      `'colourPicker-${rowIndex} colourPicker-${rowIndex} colourPicker-${rowIndex} editColourName-${rowIndex} editColourName-${rowIndex} editColourName-${rowIndex}' `;
+    rowIndex++;
+  }
+  return gridTemplate;
+};
+
+export default function ColourKey({
+  temperatureRange,
+  updateRange,
+}: ColourKeyProps) {
+  const rows = temperatureRange.map((range, index) => (
+    <ColourKeyRow
+      key={range.min}
+      range={range}
+      rowIndex={index}
+      updateRange={updateRange}
+    />
   ));
+
+  const gridTemplate = getGridTemplate(rows.length);
 
   return (
     <>
       <h2>Temperature colour key</h2>
-
-      {rows}
+      <div
+        key={`grid-container`}
+        style={{
+          display: "grid",
+          gridTemplateAreas: gridTemplate,
+          padding: 10,
+          maxWidth: 700,
+        }}
+      >
+        {rows}
+      </div>
     </>
   );
 }

@@ -7,22 +7,24 @@ import CowHitch from "./CowHitchIcon";
 
 interface ColourKeyRowProps {
   range: TemperatureRange;
+  rowIndex: number;
   updateRange: (
     range: TemperatureRange,
     newValues: Partial<TemperatureRange>,
   ) => void;
 }
 
-export default function ColourKeyRow({ range, updateRange }: ColourKeyRowProps) {
+export default function ColourKeyRow({
+  range,
+  rowIndex,
+  updateRange,
+}: ColourKeyRowProps) {
   const [editingRange, setEditingRange] = useState(false);
 
   const defaultStyle = {
-    // backgroundColor: "white",
     color: "black",
     backgroundColor: "lightblue",
-    // textAlign: "center",
-    padding: "20px 0",
-    // fontSize: 30,
+    padding: "5px 0",
   };
 
   const min = range.min == -1000 ? "below" : range.min;
@@ -31,71 +33,82 @@ export default function ColourKeyRow({ range, updateRange }: ColourKeyRowProps) 
   return (
     <>
       <div
-        key={`grid-container-${min}`}
         style={{
-          display: "grid",
-          gridTemplateColumns: "auto auto auto auto auto auto",
-          gap: 10,
-          backgroundColor: "#2196F3",
-          padding: 10,
+          ...defaultStyle,
+          textAlign: "right",
+          gridArea: `minimum-${rowIndex}`,
         }}
       >
-        <div
-          style={{
-            textAlign: "right",
-            ...defaultStyle,
-          }}
-        >
-          {min}
-        </div>
-        <div style={defaultStyle}> - </div>
-        <div style={defaultStyle}>{max}</div>
-        <div style={{ ...defaultStyle, color: range.colour }}>
-          {range.colourName}
-        </div>
-        <div style={defaultStyle}>
-          <button
-            style={{ textDecoration: "underline dotted" }}
-            onClick={() => setEditingRange(!editingRange)}
-          >
-            edit
-          </button>
-        </div>
-        <div style={{ padding: 0 }}>
-          <CowHitch
-            backgroundColour={defaultStyle.backgroundColor}
-            yarnColour={range.colour}
-            height={32}
-          />
-        </div>
+        {min}
+      </div>
+      <div
+        style={{
+          ...defaultStyle,
+          textAlign: "center",
+          gridArea: `to-${rowIndex}`,
+        }}
+      >
+        {" "}
+        -{" "}
+      </div>
+      <div
+        style={{
+          ...defaultStyle,
+          gridArea: `maximum-${rowIndex}`,
+        }}
+      >
+        {max}
+      </div>
+      <div
+        style={{
+          ...defaultStyle,
+          color: range.colour,
+          gridArea: `colourName-${rowIndex}`,
+        }}
+      >
+        {range.colourName}
+      </div>
+      <button
+        style={{
+          ...defaultStyle,
+          textDecoration: "underline dotted",
+          gridArea: `editButton-${rowIndex}`,
+        }}
+        onClick={() => setEditingRange(!editingRange)}
+      >
+        edit
+      </button>
+      <div
+        style={{
+          padding: 0,
+          gridArea: `yarnSwatch-${rowIndex}`,
+        }}
+      >
+        <CowHitch
+          backgroundColour={defaultStyle.backgroundColor}
+          yarnColour={range.colour}
+          height={34}
+        />
       </div>
       {editingRange ? (
-        <div
-          key={`grid-container`}
-          style={{
-            display: "grid",
-            gridTemplateAreas: "'colourPicker editColourName'",
-            gap: 15,
-            backgroundColor: "#2196F3",
-            padding: 10,
-          }}
-        >
+        <>
           <HexColorPicker
             color={range.colour}
             onChange={(newColour) => updateRange(range, { colour: newColour })}
             style={{
-              gridArea: "colourPicker",
+              gridArea: `colourPicker-${rowIndex}`,
               justifySelf: "self-end",
+              marginRight: 15,
             }}
           />
-          <div style={{ gridArea: "editColourName" }}>
+          <div style={{ gridArea: `editColourName-${rowIndex}` }}>
             <p>choose a new colour name:</p>
             <input
               onChange={({ target }) =>
                 updateRange(range, { colourName: target.value })
               }
               style={{
-                ...defaultStyle,
+                color: "black",
                 borderStyle: "solid",
                 borderWidth: 1,
                 borderColor: range.colour,
@@ -104,7 +117,7 @@ export default function ColourKeyRow({ range, updateRange }: ColourKeyRowProps) 
               value={range.colourName}
             />
           </div>
-        </div>
+        </>
       ) : null}
     </>
   );
