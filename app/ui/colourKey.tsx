@@ -9,11 +9,14 @@ interface ColourKeyProps {
     range: TemperatureRange,
     newValues: Partial<TemperatureRange>,
   ) => void;
+  resetRanges: () => void;
 }
 
 export const getGridTemplate = (rowCount: number) => {
   let gridTemplate = "";
   let rowIndex = 0;
+
+  gridTemplate += `'title title title title resetButton empty'`;
 
   while (rowIndex < rowCount) {
     gridTemplate +=
@@ -27,6 +30,7 @@ export const getGridTemplate = (rowCount: number) => {
 export default function ColourKey({
   temperatureRange,
   updateRange,
+  resetRanges,
 }: ColourKeyProps) {
   const rows = temperatureRange.map((range, index) => (
     <ColourKeyRow
@@ -41,7 +45,6 @@ export default function ColourKey({
 
   return (
     <>
-      <h2>Temperature colour key</h2>
       <div
         key={`grid-container`}
         style={{
@@ -51,6 +54,17 @@ export default function ColourKey({
           maxWidth: 700,
         }}
       >
+        <h2 style={{ gridArea: "title" }}>Temperature colour key</h2>
+        <button
+          onClick={resetRanges}
+          style={{
+            color: "white",
+            textDecoration: "underline dotted",
+            gridArea: "resetButton",
+          }}
+        >
+          reset
+        </button>
         {rows}
       </div>
     </>

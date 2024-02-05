@@ -6,7 +6,7 @@ export interface TemperatureRange {
   colourName: string;
 }
 
-export const defaultTemperatureRange = [
+export const defaultTemperatureKey: TemperatureRange[] = [
   { min: -1000, max: -2, colour: "#191970", colourName: "midnightblue" },
   { min: -1, max: 0, colour: "#0000FF", colourName: "blue" },
   { min: 1, max: 5, colour: "#008000", colourName: "green" },

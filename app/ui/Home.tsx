@@ -2,7 +2,7 @@
 import { useState } from "react";
 import {
   TemperatureRange,
-  defaultTemperatureRange,
+  defaultTemperatureKey,
 } from "../lib/getColourForTemperature";
 import { DailyWeather } from "../lib/openmeteo";
 import ColourKey from "./colourKey";
@@ -13,21 +13,40 @@ export default function Home({
 }: {
   dailyWeather: DailyWeather[];
 }) {
-  const [temperatureRange, setTemperatureRange] = useState(
-    defaultTemperatureRange,
+  const localTemperatureKey = localStorage.getItem("temperatureKey");
+
+  let parsedTemperatureKey;
+  if (
+    typeof localTemperatureKey === "string" &&
+    localTemperatureKey.length !== 0
+  ) {
+    parsedTemperatureKey = JSON.parse(localTemperatureKey);
+  }
+
+  const [temperatureKey, setTemperatureKey] = useState<TemperatureRange[]>(
+    parsedTemperatureKey || defaultTemperatureKey,
   );
+
+  const updateAllRanges = (newTemperatureKey: TemperatureRange[]) => {
+    setTemperatureKey(newTemperatureKey);
+    localStorage.setItem("temperatureKey", JSON.stringify(newTemperatureKey));
+  };
+
+  const resetToDefaultKey = () => {
+    updateAllRanges(defaultTemperatureKey);
+  };
 
   const updateRange = (
     range: TemperatureRange,
     newValues: Partial<TemperatureRange>,
   ) => {
-    const newTempRange = temperatureRange.map((current) => {
+    const newTemperatureKey = temperatureKey?.map((current) => {
       if (current.min === range.min) {
         return { ...range, ...newValues };
       }
       return current;
     });
-    setTemperatureRange(newTempRange);
+    updateAllRanges(newTemperatureKey);
   };
 
   return (
@@ -35,14 +54,12 @@ export default function Home({
       <h1>Knit a temperature blanket</h1>
       <br />
       <ColourKey
-        temperatureRange={temperatureRange}
+        temperatureRange={temperatureKey}
         updateRange={updateRange}
+        resetRanges={resetToDefaultKey}
       />
       <br />
-      <Pattern
-        temperatureRange={temperatureRange}
-        dailyWeather={dailyWeather}
-      />
+      <Pattern temperatureRange={temperatureKey} dailyWeather={dailyWeather} />
     </main>
   );
 }
