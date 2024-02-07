@@ -17,7 +17,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body
+        // suppress hydration warnings caused by browser extensions e.g. grammarly, specifically:
+        // Warning: Extra attributes from the server: data-new-gr-c-s-check-loaded,data-gr-ext-installed
+        suppressHydrationWarning={true}
+        className={inter.className}
+      >
+        {children}
+      </body>
     </html>
-  )
+  );
 }

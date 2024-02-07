@@ -4,6 +4,7 @@ import { useState } from "react";
 import { HexColorPicker } from "react-colorful";
 import { TemperatureRange } from "../lib/getColourForTemperature";
 import CowHitch from "./CowHitchIcon";
+import LinkButton from "./LinkButton";
 
 interface ColourKeyRowProps {
   range: TemperatureRange;
@@ -68,16 +69,15 @@ export default function ColourKeyRow({
       >
         {range.colourName}
       </div>
-      <button
+      <LinkButton
         style={{
           ...defaultStyle,
-          textDecoration: "underline dotted",
           gridArea: `editButton-${rowIndex}`,
         }}
         onClick={() => setEditingRange(!editingRange)}
       >
         edit
-      </button>
+      </LinkButton>
       <div
         style={{
           padding: 0,

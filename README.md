@@ -61,6 +61,7 @@ This project was built with NextJS following the following guides:
 - Getting started with jest and TS https://jestjs.io/docs/getting-started#using-typescript
 - Refreshing flexbox https://flexboxfroggy.com/
 - localStorage https://www.freecodecamp.org/news/how-to-use-localstorage-with-react-hooks-to-set-and-get-items/
+- appending params to a current URL https://stackoverflow.com/a/69437235
 
 
 

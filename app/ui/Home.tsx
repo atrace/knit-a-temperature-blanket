@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   TemperatureRange,
   defaultTemperatureKey,
@@ -13,19 +13,7 @@ export default function Home({
 }: {
   dailyWeather: DailyWeather[];
 }) {
-  const localTemperatureKey = localStorage.getItem("temperatureKey");
-
-  let parsedTemperatureKey;
-  if (
-    typeof localTemperatureKey === "string" &&
-    localTemperatureKey.length !== 0
-  ) {
-    parsedTemperatureKey = JSON.parse(localTemperatureKey);
-  }
-
-  const [temperatureKey, setTemperatureKey] = useState<TemperatureRange[]>(
-    parsedTemperatureKey || defaultTemperatureKey,
-  );
+  const [temperatureKey, setTemperatureKey] = useState<TemperatureRange[]>();
 
   const updateAllRanges = (newTemperatureKey: TemperatureRange[]) => {
     setTemperatureKey(newTemperatureKey);
@@ -40,7 +28,9 @@ export default function Home({
     range: TemperatureRange,
     newValues: Partial<TemperatureRange>,
   ) => {
-    const newTemperatureKey = temperatureKey?.map((current) => {
+    if (!temperatureKey) return;
+
+    const newTemperatureKey = temperatureKey.map((current) => {
       if (current.min === range.min) {
         return { ...range, ...newValues };
       }
@@ -49,8 +39,24 @@ export default function Home({
     updateAllRanges(newTemperatureKey);
   };
 
+  useEffect(() => {
+    let localTemperatureKey;
+    localTemperatureKey = localStorage.getItem("temperatureKey");
+
+    if (
+      typeof localTemperatureKey === "string" &&
+      localTemperatureKey.length !== 0
+    ) {
+      const parsedTemperatureKey = JSON.parse(localTemperatureKey);
+      if (!!parsedTemperatureKey) {
+        updateAllRanges(parsedTemperatureKey);
+      }
+    }
+  }, [setTemperatureKey]);
+  if (!temperatureKey) return;
+
   return (
-    <main>
+    <>
       <h1>Knit a temperature blanket</h1>
       <br />
       <ColourKey
@@ -60,6 +66,6 @@ export default function Home({
       />
       <br />
       <Pattern temperatureRange={temperatureKey} dailyWeather={dailyWeather} />
-    </main>
+    </>
   );
 }

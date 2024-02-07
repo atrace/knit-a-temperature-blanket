@@ -1,6 +1,7 @@
 "use client";
 
 import { TemperatureRange } from "../lib/getColourForTemperature";
+import LinkButton from "./LinkButton";
 import ColourKeyRow from "./colourKeyRow";
 
 interface ColourKeyProps {
@@ -55,16 +56,14 @@ export default function ColourKey({
         }}
       >
         <h2 style={{ gridArea: "title" }}>Temperature colour key</h2>
-        <button
+        <LinkButton
           onClick={resetRanges}
           style={{
-            color: "white",
-            textDecoration: "underline dotted",
             gridArea: "resetButton",
           }}
         >
           reset
-        </button>
+        </LinkButton>
         {rows}
       </div>
     </>
