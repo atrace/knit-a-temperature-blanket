@@ -8,6 +8,13 @@ import { DailyWeather } from "../lib/openmeteo";
 import ColourKey from "./colourKey";
 import Pattern from "./pattern";
 import Link from "./Link";
+import { useSearchParams } from "next/navigation";
+
+
+const getSharableURL = (temperatureKey: TemperatureRange[]) => {
+  const queryParam = encodeURIComponent(JSON.stringify(temperatureKey));
+  return "?temperatureKey=" + queryParam;
+};
 
 export default function Home({
   dailyWeather,
@@ -15,11 +22,6 @@ export default function Home({
   dailyWeather: DailyWeather[];
 }) {
   const [temperatureKey, setTemperatureKey] = useState<TemperatureRange[]>();
-
-  const getSharableURL = (temperatureKey: TemperatureRange[]) => {
-    const queryParam = encodeURIComponent(JSON.stringify(temperatureKey));
-    return "?" + queryParam;
-  };
 
   const updateAllRanges = (newTemperatureKey: TemperatureRange[]) => {
     setTemperatureKey(newTemperatureKey);
@@ -45,20 +47,26 @@ export default function Home({
     updateAllRanges(newTemperatureKey);
   };
 
-  useEffect(() => {
-    let localTemperatureKey;
-    localTemperatureKey = localStorage.getItem("temperatureKey");
+  const sharedTemperatureKey = useSearchParams().get("temperatureKey");
 
-    if (
-      typeof localTemperatureKey === "string" &&
-      localTemperatureKey.length !== 0
-    ) {
-      const parsedTemperatureKey = JSON.parse(localTemperatureKey);
-      if (!!parsedTemperatureKey) {
-        updateAllRanges(parsedTemperatureKey);
+  useEffect(() => {
+    if (!!sharedTemperatureKey) {
+      setTemperatureKey(JSON.parse(sharedTemperatureKey));
+    } else {
+      let localTemperatureKey;
+      localTemperatureKey = localStorage.getItem("temperatureKey");
+
+      if (
+        typeof localTemperatureKey === "string" &&
+        localTemperatureKey.length !== 0
+      ) {
+        const parsedTemperatureKey = JSON.parse(localTemperatureKey);
+        if (!!parsedTemperatureKey) {
+          updateAllRanges(parsedTemperatureKey);
+        }
       }
     }
-  }, [setTemperatureKey]);
+  }, [setTemperatureKey, sharedTemperatureKey]);
 
   if (!temperatureKey) return;
 
