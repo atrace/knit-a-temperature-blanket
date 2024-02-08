@@ -7,6 +7,7 @@ import {
 import { DailyWeather } from "../lib/openmeteo";
 import ColourKey from "./colourKey";
 import Pattern from "./pattern";
+import Link from "./Link";
 
 export default function Home({
   dailyWeather,
@@ -14,6 +15,11 @@ export default function Home({
   dailyWeather: DailyWeather[];
 }) {
   const [temperatureKey, setTemperatureKey] = useState<TemperatureRange[]>();
+
+  const getSharableURL = (temperatureKey: TemperatureRange[]) => {
+    const queryParam = encodeURIComponent(JSON.stringify(temperatureKey));
+    return "?" + queryParam;
+  };
 
   const updateAllRanges = (newTemperatureKey: TemperatureRange[]) => {
     setTemperatureKey(newTemperatureKey);
@@ -53,11 +59,13 @@ export default function Home({
       }
     }
   }, [setTemperatureKey]);
+
   if (!temperatureKey) return;
 
   return (
     <>
       <h1>Knit a temperature blanket</h1>
+      <Link href={getSharableURL(temperatureKey)}>share your blanket</Link>
       <br />
       <ColourKey
         temperatureRange={temperatureKey}
