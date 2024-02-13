@@ -36,12 +36,12 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - [x] Share pattern with friends via URL
 - [x] Save selected config to local storage for users to return to and refresh later in the year
 - [ ] Parse (don't validate) local storage and query param temperature keys
-- [ ] WIP Make pages responsive (mobile vs desktop)
+- [ ] Make pages responsive (mobile vs desktop)
 - [ ] Display pattern result alongside pretty colour visualisation of blanket
 - [ ] Make key creator a pretty visual experience i.e. UX to create the above pictured card key with yarn swatches.
 - [ ] Export knitting pattern to print
 - [ ] Add line of previous progress e.g. already knitted january, just focus on pattern for feb - march.
-- [ ] Separate page for configuring temperature colour key
+- [ ] WIP Separate page for configuring temperature colour key
 - [ ] About or home page explaining a temperature blanket
 
 

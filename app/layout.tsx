@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import ContextWrapper from "./ui/context/ContextWrapper";
 import React from "react";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -20,7 +19,7 @@ const RootLayout: React.FC<React.AllHTMLAttributes<{}>> = ({ children }) => {
         suppressHydrationWarning={true}
         className={inter.className}
       >
-        <ContextWrapper>{children}</ContextWrapper>
+        {children}
       </body>
     </html>
   );
