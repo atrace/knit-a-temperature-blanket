@@ -32,13 +32,17 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
     - [ ] Allow users to enter their own temperature ranges
     - [ ] Allow users to enter their own location to fetch weather from
     - [ ] Allow users to enter their own stitches per row e.g. knit 1 row, purl 1 row
+    - [ ] Rainy day override
 - [x] Share pattern with friends via URL
 - [x] Save selected config to local storage for users to return to and refresh later in the year
 - [ ] Parse (don't validate) local storage and query param temperature keys
+- [ ] WIP Make pages responsive (mobile vs desktop)
 - [ ] Display pattern result alongside pretty colour visualisation of blanket
 - [ ] Make key creator a pretty visual experience i.e. UX to create the above pictured card key with yarn swatches.
 - [ ] Export knitting pattern to print
 - [ ] Add line of previous progress e.g. already knitted january, just focus on pattern for feb - march.
+- [ ] Separate page for configuring temperature colour key
+- [ ] About or home page explaining a temperature blanket
 
 
 ### Sneak Peek
@@ -64,6 +68,7 @@ This project was built with NextJS following the following guides:
 - localStorage https://www.freecodecamp.org/news/how-to-use-localstorage-with-react-hooks-to-set-and-get-items/
 - appending params to a current URL https://stackoverflow.com/a/69437235
 - Using Tailwind CSS https://annadeveloper.medium.com/building-a-responsive-website-with-next-js-and-tailwind-css-from-scratch-4d7f7e9916fe
+- React Context https://react.dev/learn/passing-data-deeply-with-context#step-1-create-the-context
 
 
 

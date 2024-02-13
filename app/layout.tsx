@@ -1,20 +1,17 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import ContextWrapper from "./ui/context/ContextWrapper";
 import React from "react";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Knit a temperature blanket",
-  description: "Knit a temperature blanket"
+  description: "Knit a temperature blanket",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+const RootLayout: React.FC<React.AllHTMLAttributes<{}>> = ({ children }) => {
   return (
     <html lang="en">
       <body
@@ -23,8 +20,10 @@ export default function RootLayout({
         suppressHydrationWarning={true}
         className={inter.className}
       >
-        {children}
+        <ContextWrapper>{children}</ContextWrapper>
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;
