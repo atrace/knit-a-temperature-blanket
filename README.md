@@ -69,6 +69,7 @@ This project was built with NextJS following the following guides:
 - appending params to a current URL https://stackoverflow.com/a/69437235
 - Using Tailwind CSS https://annadeveloper.medium.com/building-a-responsive-website-with-next-js-and-tailwind-css-from-scratch-4d7f7e9916fe
 - React Context https://react.dev/learn/passing-data-deeply-with-context#step-1-create-the-context
+- Typing React component props https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/basic_type_example#useful-react-prop-type-examples
 
 
 

@@ -1,17 +1,15 @@
-type LinkButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
+import React from "react";
+
+type LinkButtonProps = React.ComponentProps<"button">;
 
 const LinkButton: React.FC<LinkButtonProps> = ({
   children,
-  style,
+  className,
   ...props
 }) => {
   return (
     <button
-      style={{
-        color: "white",
-        textDecoration: "underline dotted",
-        ...style,
-      }}
+      className={`underline decoration-dotted hover:bg-primary-white ${className}`}
       {...props}
     >
       {children}

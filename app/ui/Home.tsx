@@ -5,22 +5,21 @@ import {
   defaultTemperatureKey,
 } from "../lib/getColourForTemperature";
 import { DailyWeather } from "../lib/openmeteo";
-import ColourKey from "./colourKey";
-import Pattern from "./pattern";
+import ColourKey from "./ColourKey";
+import Pattern from "./Pattern";
 import Link from "./Link";
 import { useSearchParams } from "next/navigation";
-
 
 const getSharableURL = (temperatureKey: TemperatureRange[]) => {
   const queryParam = encodeURIComponent(JSON.stringify(temperatureKey));
   return "?temperatureKey=" + queryParam;
 };
 
-export default function Home({
-  dailyWeather,
-}: {
+interface HomeProps {
   dailyWeather: DailyWeather[];
-}) {
+}
+
+const Home = ({ dailyWeather }: HomeProps) => {
   const [temperatureKey, setTemperatureKey] = useState<TemperatureRange[]>();
 
   const updateAllRanges = (newTemperatureKey: TemperatureRange[]) => {
@@ -71,17 +70,26 @@ export default function Home({
   if (!temperatureKey) return;
 
   return (
-    <>
-      <h1>Knit a temperature blanket</h1>
-      <Link href={getSharableURL(temperatureKey)}>share your blanket</Link>
-      <br />
-      <ColourKey
-        temperatureRange={temperatureKey}
-        updateRange={updateRange}
-        resetRanges={resetToDefaultKey}
-      />
-      <br />
-      <Pattern temperatureRange={temperatureKey} dailyWeather={dailyWeather} />
-    </>
+    <div className="mx-auto max-w-screen-xl">
+      <div>
+        <h1>Knit a temperature blanket</h1>
+        <Link href={getSharableURL(temperatureKey)}>share your blanket</Link>
+      </div>
+      <div className="justify-center md:flex">
+        <ColourKey
+          temperatureRange={temperatureKey}
+          updateRange={updateRange}
+          resetRanges={resetToDefaultKey}
+          className="md:order-2 md:shrink-0"
+        />
+        <Pattern
+          temperatureRange={temperatureKey}
+          dailyWeather={dailyWeather}
+          className="md:order-1"
+        />
+      </div>
+    </div>
   );
-}
+};
+
+export default Home;

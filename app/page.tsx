@@ -1,7 +1,7 @@
 import { getWeather } from "./lib/openmeteo";
 import Home from "./ui/Home";
 
-export default async function HomePage() {
+const HomePage = async () => {
   const dailyWeather = await getWeather();
 
   return (
@@ -9,4 +9,6 @@ export default async function HomePage() {
       <Home dailyWeather={dailyWeather} />
     </main>
   );
-}
+};
+
+export default HomePage;

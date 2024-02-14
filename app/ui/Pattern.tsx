@@ -5,13 +5,16 @@ import {
 } from "../lib/getColourForTemperature";
 import { DailyWeather } from "../lib/openmeteo";
 
-export default function Pattern({
-  dailyWeather,
-  temperatureRange,
-}: {
+interface PatternProps extends React.ComponentProps<"table"> {
   dailyWeather: DailyWeather[];
   temperatureRange: TemperatureRange[];
-}) {
+}
+
+const Pattern = ({
+  dailyWeather,
+  temperatureRange,
+  ...props
+}: PatternProps) => {
   //TODO:  Make text item generator generic to allow extra fields to be added easily
   const rows = dailyWeather.map((todaysWeather) => {
     // Most recent 2 days come back as NaN :thonk:
@@ -29,22 +32,20 @@ export default function Pattern({
         <td>{date}</td>
         <td>({todaysWeather.temperature2mMean.toFixed()}°C)</td>
 
-        <td style={{ backgroundColor: colour, width: 200 }}></td>
+        <td className="min-w-52" style={{ backgroundColor: colour }}></td>
 
-        <td style={{ marginLeft: 4, display: "flex" }}>
-          <p>knit 1 row of</p>
-          <p style={{ marginLeft: 4, color: colour }}>{colourName}</p>
+        <td className="ml-2 flex">
+          <p style={{ color: colour }}>{colourName}</p>
         </td>
       </tr>
     );
   });
 
   return (
-    <>
-      <h2>Date Temperature</h2>
-      <table>
-        <tbody>{rows}</tbody>
-      </table>
-    </>
+    <table {...props}>
+      <tbody>{rows}</tbody>
+    </table>
   );
-}
+};
+
+export default Pattern;

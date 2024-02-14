@@ -15,63 +15,54 @@ interface ColourKeyRowProps {
   ) => void;
 }
 
-export default function ColourKeyRow({
-  range,
-  rowIndex,
-  updateRange,
-}: ColourKeyRowProps) {
+const ColourKeyRow = ({ range, rowIndex, updateRange }: ColourKeyRowProps) => {
   const [editingRange, setEditingRange] = useState(false);
 
-  const defaultStyle = {
-    color: "black",
-    backgroundColor: "lightblue",
-    padding: "5px 0",
-  };
+  const backgroundColour = "lightblue";
+  const baseClasses = "bg-secondary-blue text-primary-black p-1";
 
   const min = range.min == -1000 ? "below" : range.min;
   const max = range.max == 1000 ? "above" : range.max;
 
   return (
     <>
-      <div
+      <p
+        className={`${baseClasses} text-right`}
         style={{
-          ...defaultStyle,
-          textAlign: "right",
           gridArea: `minimum-${rowIndex}`,
         }}
       >
         {min}
-      </div>
-      <div
+      </p>
+      <p
+        className={`${baseClasses} text-center`}
         style={{
-          ...defaultStyle,
-          textAlign: "center",
           gridArea: `to-${rowIndex}`,
         }}
       >
         {" "}
-        -{" "}
-      </div>
-      <div
+        –{" "}
+      </p>
+      <p
+        className={baseClasses}
         style={{
-          ...defaultStyle,
           gridArea: `maximum-${rowIndex}`,
         }}
       >
         {max}
-      </div>
-      <div
+      </p>
+      <p
+        className={baseClasses}
         style={{
-          ...defaultStyle,
           color: range.colour,
           gridArea: `colourName-${rowIndex}`,
         }}
       >
         {range.colourName}
-      </div>
+      </p>
       <LinkButton
+        className={baseClasses}
         style={{
-          ...defaultStyle,
           gridArea: `editButton-${rowIndex}`,
         }}
         onClick={() => setEditingRange(!editingRange)}
@@ -79,15 +70,15 @@ export default function ColourKeyRow({
         edit
       </LinkButton>
       <div
+        className="p-0"
         style={{
-          padding: 0,
           gridArea: `yarnSwatch-${rowIndex}`,
         }}
       >
         <CowHitch
-          backgroundColour={defaultStyle.backgroundColor}
+          backgroundColour={backgroundColour}
           yarnColour={range.colour}
-          height={34}
+          height={34.5}
         />
       </div>
       {editingRange ? (
@@ -95,10 +86,9 @@ export default function ColourKeyRow({
           <HexColorPicker
             color={range.colour}
             onChange={(newColour) => updateRange(range, { colour: newColour })}
+            className="mr-4 grid justify-self-end"
             style={{
               gridArea: `colourPicker-${rowIndex}`,
-              justifySelf: "self-end",
-              marginRight: 15,
             }}
           />
           <div style={{ gridArea: `editColourName-${rowIndex}` }}>
@@ -107,12 +97,9 @@ export default function ColourKeyRow({
               onChange={({ target }) =>
                 updateRange(range, { colourName: target.value })
               }
+              className={`border border-solid p-2 text-primary-black`}
               style={{
-                color: "black",
-                borderStyle: "solid",
-                borderWidth: 1,
                 borderColor: range.colour,
-                padding: 7,
               }}
               value={range.colourName}
             />
@@ -121,4 +108,6 @@ export default function ColourKeyRow({
       ) : null}
     </>
   );
-}
+};
+
+export default ColourKeyRow;

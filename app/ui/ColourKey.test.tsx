@@ -1,4 +1,4 @@
-import { getGridTemplate } from "./colourKey";
+import { getGridTemplate } from "./ColourKey";
 
 describe("colourKey", () => {
   it("returns a grid template for 3 rows", () => {

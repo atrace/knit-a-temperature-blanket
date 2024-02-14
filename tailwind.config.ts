@@ -3,14 +3,18 @@ import type { Config } from 'tailwindcss'
 const config: Config = {
   content: ["./app/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
+    colors: {
+      "primary-white": "#ffffff",
+      "primary-black": "#000000",
+      "secondary-blue": "lightblue",
+    },
     extend: {
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))"
-      }
-    }
+        "big-background": "url('/blue-background.png')",
+        "yellow-knit-stitch": "url('/yellow-knit-stitch.jpg')",
+      },
+    },
   },
-  plugins: []
+  plugins: [],
 };
 export default config

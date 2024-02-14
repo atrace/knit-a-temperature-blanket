@@ -1,19 +1,16 @@
 import NextLink from "next/link";
+import React from "react";
 
-type LinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement>;
+type LinkProps = React.ComponentPropsWithRef<"a">;
 
-const Link: React.FC<LinkProps> = ({ children, style, href, ...props }) => {
+const Link: React.FC<LinkProps> = ({ href, children, className, ...props }) => {
   if (!href) return;
 
   return (
     <NextLink
-      style={{
-        color: "white",
-        textDecoration: "underline dotted",
-        ...style,
-      }}
-      {...props}
+      className={`text-primary-white underline decoration-dotted hover:bg-primary-white ${className}`}
       href={href}
+      {...props}
     >
       {children}
     </NextLink>

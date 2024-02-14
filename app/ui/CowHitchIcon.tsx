@@ -1,16 +1,15 @@
 import { colourShade } from "@/lib/colourShade";
-import * as React from "react";
 
 const originalHeight = 305.575;
 const originalWidth = 757.682;
 
-interface Props {
+interface CowHitchProps {
   backgroundColour: string; // hex colour code
   yarnColour: string; // hex colour code
   height?: number; // pixels
 }
 
-const CowHitch = ({ backgroundColour, yarnColour, height }: Props) => {
+const CowHitch = ({ backgroundColour, yarnColour, height }: CowHitchProps) => {
   const darken = -20;
   const outlineColour = colourShade(yarnColour, darken);
 
