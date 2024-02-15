@@ -10,8 +10,9 @@ interface CowHitchProps {
 }
 
 const CowHitch = ({ backgroundColour, yarnColour, height }: CowHitchProps) => {
-  const darken = -20;
-  const outlineColour = colourShade(yarnColour, darken);
+  // const darken = -20;
+  // const outlineColour = colourShade(yarnColour, darken);
+  const outlineColour = "grey";
 
   // preserve aspect ratio
   const width = height
@@ -35,7 +36,6 @@ const CowHitch = ({ backgroundColour, yarnColour, height }: CowHitchProps) => {
           d="M439.296 390.772h315.97v67.344h-315.97z"
           style={{
             opacity: 0.995,
-            fill: backgroundColour,
             fillOpacity: 1,
             strokeWidth: 0.851128,
           }}

@@ -6,7 +6,9 @@ const config: Config = {
     colors: {
       "primary-white": "#ffffff",
       "primary-black": "#000000",
-      "secondary-blue": "lightblue",
+      "key-background": "black",
+      "key-font": "white",
+      "key-outline": "white",
     },
     extend: {
       backgroundImage: {

@@ -5,6 +5,8 @@ import { TemperatureRange } from "../lib/getColourForTemperature";
 import ColourKeyRow from "./ColourKeyRow";
 import LinkButton from "./LinkButton";
 
+const borderSize = 4;
+
 interface ColourKeyProps extends React.ComponentProps<"div"> {
   temperatureRange: TemperatureRange[];
   updateRange: (
@@ -34,17 +36,19 @@ export const getGridTemplate = (rowCount: number) => {
 const Footer = () => (
   <>
     <div
-      className="rounded-bl-xl bg-secondary-blue p-1"
+      className={`bg-key-background border-key-outline rounded-bl-xl border-${borderSize} border-r-0 border-t-0 p-1`}
       style={{
         gridArea: "footer",
       }}
     />
     <div
-      className="max-w-8 rounded-br-xl bg-secondary-blue"
+      className={`bg-key-outline border-key-outline max-w-8 rounded-br-xl border-${borderSize} border-l-0 border-t-0`}
       style={{
         gridArea: "footer-corner",
       }}
-    />
+    >
+      <div className="bg-key-background py-1" style={{ width: 7.2 }} />
+    </div>
   </>
 );
 
@@ -60,6 +64,7 @@ const ColourKey = ({
       range={range}
       rowIndex={index}
       updateRange={updateRange}
+      borderWidth={borderSize}
     />
   ));
 
@@ -75,25 +80,21 @@ const ColourKey = ({
         }}
       >
         <h2
-          className="rounded-tl-xl bg-secondary-blue py-1 text-primary-black"
-          style={{ gridArea: "title" }}
+          className={`bg-key-background text-key-text border-key-outline rounded-tl-xl border-${borderSize} border-r-0 px-4 py-1`}
+          style={{ gridArea: "title", borderBottomStyle: "double" }}
         >
           Temperature colour key
         </h2>
         <LinkButton
           onClick={resetRanges}
-          className="bg-secondary-blue text-primary-black"
-          style={{
-            gridArea: "resetButton",
-          }}
+          className={`bg-key-background text-key-text text-sm border-${borderSize} border-key-outline border-x-0`}
+          style={{ gridArea: "resetButton", borderBottomStyle: "double" }}
         >
           reset
         </LinkButton>
         <div
-          className="max-w-8 rounded-tr-xl bg-secondary-blue"
-          style={{
-            gridArea: "corner",
-          }}
+          className={`bg-key-background max-w-8 rounded-tr-xl border-${borderSize} border-l-0`}
+          style={{ gridArea: "corner", borderBottomStyle: "double" }}
         />
         {rows}
         <Footer />

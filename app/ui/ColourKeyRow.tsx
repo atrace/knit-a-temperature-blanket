@@ -13,13 +13,19 @@ interface ColourKeyRowProps {
     range: TemperatureRange,
     newValues: Partial<TemperatureRange>,
   ) => void;
+  borderWidth: number;
 }
 
-const ColourKeyRow = ({ range, rowIndex, updateRange }: ColourKeyRowProps) => {
+const ColourKeyRow = ({
+  range,
+  rowIndex,
+  updateRange,
+  borderWidth,
+}: ColourKeyRowProps) => {
   const [editingRange, setEditingRange] = useState(false);
 
-  const backgroundColour = "lightblue";
-  const baseClasses = "bg-secondary-blue text-primary-black p-1";
+  const backgroundColour = "white";
+  const baseClasses = "bg-key-background text-text-key-text p-1";
 
   const min = range.min == -1000 ? "below" : range.min;
   const max = range.max == 1000 ? "above" : range.max;
@@ -27,7 +33,7 @@ const ColourKeyRow = ({ range, rowIndex, updateRange }: ColourKeyRowProps) => {
   return (
     <>
       <p
-        className={`${baseClasses} text-right`}
+        className={`${baseClasses} border-key-outline border-l-${borderWidth} text-right`}
         style={{
           gridArea: `minimum-${rowIndex}`,
         }}
@@ -61,7 +67,7 @@ const ColourKeyRow = ({ range, rowIndex, updateRange }: ColourKeyRowProps) => {
         {range.colourName}
       </p>
       <LinkButton
-        className={baseClasses}
+        className={`${baseClasses} px-2 text-sm`}
         style={{
           gridArea: `editButton-${rowIndex}`,
         }}

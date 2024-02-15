@@ -35,10 +35,11 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
     - [ ] Rainy day override
 - [x] Share pattern with friends via URL
 - [x] Save selected config to local storage for users to return to and refresh later in the year
+- [x] Make pages responsive (mobile vs desktop)
+- [x] Make key creator a pretty visual experience i.e. UX to create the above pictured card key with yarn swatches.
+- [ ] Make pretty colour key frame a more reusable component to make other pretty keys e.g. location frame (will need to rework header and footer to be less grid locked to content :/)
 - [ ] Parse (don't validate) local storage and query param temperature keys
-- [ ] Make pages responsive (mobile vs desktop)
 - [ ] Display pattern result alongside pretty colour visualisation of blanket
-- [ ] Make key creator a pretty visual experience i.e. UX to create the above pictured card key with yarn swatches.
 - [ ] Export knitting pattern to print
 - [ ] Add line of previous progress e.g. already knitted january, just focus on pattern for feb - march.
 - [ ] WIP Separate page for configuring temperature colour key
@@ -71,7 +72,14 @@ This project was built with NextJS following the following guides:
 - React Context https://react.dev/learn/passing-data-deeply-with-context#step-1-create-the-context
 - Typing React component props https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/basic_type_example#useful-react-prop-type-examples
 
+### Troubleshooting for a future me
 
+#### Changes not reflecting accurately locally?
+
+Help! I've made a change to a tsx file but that change isn't reflected visually. When I inspect the changed element I can see a new tailwind class name, but it's not working??
+
+Refreshing the page won't work. Killing and recompiling the app won't work. Opening the page in a new tab won't work.
+Poke Next/tailwind back into life by making a different arbitrary change to your tailwind classnames. Your changes should come through and you can revert the arbitrary change now too.
 
 ### Credit & attributions
 
