@@ -25,7 +25,7 @@ const ColourKeyRow = ({
   const [editingRange, setEditingRange] = useState(false);
 
   const backgroundColour = "white";
-  const baseClasses = "bg-key-background text-text-key-text p-1";
+  const baseClasses = "bg-key-background text-key-text p-1";
 
   const min = range.min == -1000 ? "below" : range.min;
   const max = range.max == 1000 ? "above" : range.max;
@@ -73,7 +73,7 @@ const ColourKeyRow = ({
         }}
         onClick={() => setEditingRange(!editingRange)}
       >
-        edit
+        {editingRange ? "done" : "edit"}
       </LinkButton>
       <div
         className="p-0"
@@ -89,14 +89,20 @@ const ColourKeyRow = ({
       </div>
       {editingRange ? (
         <>
-          <HexColorPicker
-            color={range.colour}
-            onChange={(newColour) => updateRange(range, { colour: newColour })}
-            className="mr-4 grid justify-self-end"
+          <div
             style={{
+              borderLeftWidth: borderWidth,
               gridArea: `colourPicker-${rowIndex}`,
             }}
-          />
+            className="flex justify-end px-4"
+          >
+            <HexColorPicker
+              color={range.colour}
+              onChange={(newColour) =>
+                updateRange(range, { colour: newColour })
+              }
+            />
+          </div>
           <div style={{ gridArea: `editColourName-${rowIndex}` }}>
             <p>choose a new colour name:</p>
             <input
@@ -109,6 +115,14 @@ const ColourKeyRow = ({
               }}
               value={range.colourName}
             />
+          </div>
+          <div
+            style={{
+              paddingLeft: 7.2,
+              gridArea: `colourPickerEdge-${rowIndex}`,
+            }}
+          >
+            <div className="bg-key-outline min-h-full" style={{ width: 25 }} />
           </div>
         </>
       ) : null}

@@ -44,6 +44,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - [ ] Add line of previous progress e.g. already knitted january, just focus on pattern for feb - march.
 - [ ] WIP Separate page for configuring temperature colour key
 - [ ] About or home page explaining a temperature blanket
+- [ ] Auto-generate temperature ranges based on previous years' data
+- [ ] Give more user feedback / instruction on creating sharable URL 
 
 
 ### Sneak Peek

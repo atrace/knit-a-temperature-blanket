@@ -25,7 +25,7 @@ export const getGridTemplate = (rowCount: number) => {
   while (rowIndex < rowCount) {
     gridTemplate +=
       `'minimum-${rowIndex} to-${rowIndex} maximum-${rowIndex} colourName-${rowIndex} editButton-${rowIndex} yarnSwatch-${rowIndex}' ` +
-      `'colourPicker-${rowIndex} colourPicker-${rowIndex} colourPicker-${rowIndex} editColourName-${rowIndex} editColourName-${rowIndex} editColourName-${rowIndex}' `;
+      `'colourPicker-${rowIndex} colourPicker-${rowIndex} colourPicker-${rowIndex} editColourName-${rowIndex} editColourName-${rowIndex} colourPickerEdge-${rowIndex}' `;
     rowIndex++;
   }
 
