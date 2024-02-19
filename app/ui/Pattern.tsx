@@ -22,21 +22,18 @@ const Pattern = ({
 
     const date = todaysWeather.datetime.toDateString().slice(4, 10);
 
-    const { colour, colourName } = getColourForTemperature(
+    const { colour } = getColourForTemperature(
       temperatureRange,
       todaysWeather.temperature2mMean,
     );
 
     return (
-      <tr key={date}>
-        <td>{date}</td>
-        <td>({todaysWeather.temperature2mMean.toFixed()}°C)</td>
-
-        <td className="min-w-52" style={{ backgroundColor: colour }}></td>
-
-        <td className="ml-2 flex">
-          <p style={{ color: colour }}>{colourName}</p>
+      <tr className="flex" key={date}>
+        <td className="min-w-28" style={{ color: colour }}>
+          {date} ({todaysWeather.temperature2mMean.toFixed()}°C)
         </td>
+
+        <td className="min-w-52 grow" style={{ backgroundColor: colour }}></td>
       </tr>
     );
   });

@@ -70,11 +70,11 @@ const Home = ({ dailyWeather }: HomeProps) => {
   if (!temperatureKey) return;
 
   return (
-    <div className="mx-auto md:max-w-3xl lg:max-w-screen-xl">
+    <div className="mx-auto px-5 md:max-w-3xl lg:max-w-screen-xl">
       <div>
         <Link href={getSharableURL(temperatureKey)}>share your blanket</Link>
       </div>
-      <div className="justify-center lg:flex">
+      <div className="flex flex-col justify-center lg:flex-row">
         <div className="lg:order-2 lg:shrink-0">
           <ColourKey
             temperatureRange={temperatureKey}
@@ -85,7 +85,7 @@ const Home = ({ dailyWeather }: HomeProps) => {
         <Pattern
           temperatureRange={temperatureKey}
           dailyWeather={dailyWeather}
-          className="lg:order-1"
+          className="grow lg:order-1"
         />
       </div>
     </div>

@@ -38,15 +38,16 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - [x] Make pages responsive (mobile vs desktop)
 - [x] Make fun header responsive
 - [x] Make key creator a pretty visual experience i.e. UX to create the above pictured card key with yarn swatches.
+- [x] Display pattern result alongside pretty colour visualisation of blanket
 - [ ] Make pretty colour key frame a more reusable component to make other pretty keys e.g. location frame (will need to rework header and footer to be less grid locked to content :/)
 - [ ] Parse (don't validate) local storage and query param temperature keys
-- [ ] Display pattern result alongside pretty colour visualisation of blanket
 - [ ] Export knitting pattern to print
 - [ ] Add line of previous progress e.g. already knitted january, just focus on pattern for feb - march.
 - [ ] About or home page explaining a temperature blanket
 - [ ] Auto-generate temperature ranges based on previous years' data
+- [ ] Make 'share' button nice
 - [ ] Give more user feedback / instruction on creating sharable URL 
-- [ ] Use some pretty icons for edit colour range button
+- [ ] Use some pretty icons for edit & reset colour range buttons
 
 
 ### Sneak Peek
