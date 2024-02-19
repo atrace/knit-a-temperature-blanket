@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import React from "react";
-import "./globals.css";
 import { inter } from "./font";
+import "./globals.css";
+import { Header } from "./ui/Header";
 
 export const metadata: Metadata = {
   title: "Knit a temperature blanket",
@@ -16,6 +17,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => (
       suppressHydrationWarning={true}
       className={inter.className}
     >
+      <Header />
       {children}
     </body>
   </html>

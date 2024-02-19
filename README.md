@@ -36,6 +36,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - [x] Share pattern with friends via URL
 - [x] Save selected config to local storage for users to return to and refresh later in the year
 - [x] Make pages responsive (mobile vs desktop)
+- [x] Make fun header responsive
 - [x] Make key creator a pretty visual experience i.e. UX to create the above pictured card key with yarn swatches.
 - [ ] Make pretty colour key frame a more reusable component to make other pretty keys e.g. location frame (will need to rework header and footer to be less grid locked to content :/)
 - [ ] Parse (don't validate) local storage and query param temperature keys
@@ -50,7 +51,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ### Sneak Peek
 
-![Screenshot of the web app running locally](public/sneak_peek.png)
+![Screenshot of the web app running locally on different size browser screens, including an iPhone SE](public/sneak_peek.png)
 
 
 ## Resources
@@ -81,7 +82,15 @@ This project was built with NextJS following the following guides:
 Help! I've made a change to a tsx file but that change isn't reflected visually. When I inspect the changed element I can see a new tailwind class name, but it's not working??
 
 Refreshing the page won't work. Killing and recompiling the app won't work. Opening the page in a new tab won't work.
-Poke Next/tailwind back into life by making a different arbitrary change to your tailwind classnames. Your changes should come through and you can revert the arbitrary change now too.
+Poke Tailwind back into life by removing a dynamic className. For example, if this isn't working:
+```html
+<div className={`border-w-${borderWidth}`} />
+```
+try changing it to: 
+```html
+<div className={`border-w-4`} />
+```
+Your changes should come through and you can now revert the className change.
 
 ### Credit & attributions
 

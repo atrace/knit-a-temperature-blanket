@@ -76,7 +76,7 @@ const ColourKeyRow = ({
         {editingRange ? "done" : "edit"}
       </LinkButton>
       <div
-        className="p-0"
+        className="w-fit p-0"
         style={{
           gridArea: `yarnSwatch-${rowIndex}`,
         }}
@@ -122,7 +122,7 @@ const ColourKeyRow = ({
               gridArea: `colourPickerEdge-${rowIndex}`,
             }}
           >
-            <div className="bg-key-outline min-h-full" style={{ width: 25 }} />
+            <div className="min-h-full bg-key-outline" style={{ width: 25 }} />
           </div>
         </>
       ) : null}

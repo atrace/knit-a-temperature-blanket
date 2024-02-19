@@ -1,4 +1,5 @@
 "use client";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import {
   TemperatureRange,
@@ -6,20 +7,12 @@ import {
 } from "../lib/getColourForTemperature";
 import { DailyWeather } from "../lib/openmeteo";
 import ColourKey from "./ColourKey";
-import Pattern from "./Pattern";
 import Link from "./Link";
-import { useSearchParams } from "next/navigation";
-import { knitFont } from "@/font";
+import Pattern from "./Pattern";
 
 const getSharableURL = (temperatureKey: TemperatureRange[]) => {
   const queryParam = encodeURIComponent(JSON.stringify(temperatureKey));
   return "?temperatureKey=" + queryParam;
-};
-
-// TODO: Figure out responsiveness here! Using character key in preview at
-// https://www.fontspace.com/jolly-sweater-font-f106312#action=charmap&id=jEpM9
-const makeKnittedFont = (message: string): string => {
-  return `#####(${message.replaceAll(" ", "_")})#####`;
 };
 
 interface HomeProps {
@@ -77,24 +70,22 @@ const Home = ({ dailyWeather }: HomeProps) => {
   if (!temperatureKey) return;
 
   return (
-    <div className="mx-auto max-w-screen-xl">
+    <div className="mx-auto md:max-w-3xl lg:max-w-screen-xl">
       <div>
-        <h1 className={knitFont.className}>
-          {makeKnittedFont("Knit a temperature blanket")}
-        </h1>
         <Link href={getSharableURL(temperatureKey)}>share your blanket</Link>
       </div>
-      <div className="justify-center md:flex">
-        <ColourKey
-          temperatureRange={temperatureKey}
-          updateRange={updateRange}
-          resetRanges={resetToDefaultKey}
-          className="md:order-2 md:shrink-0"
-        />
+      <div className="justify-center lg:flex">
+        <div className="lg:order-2 lg:shrink-0">
+          <ColourKey
+            temperatureRange={temperatureKey}
+            updateRange={updateRange}
+            resetRanges={resetToDefaultKey}
+          />
+        </div>
         <Pattern
           temperatureRange={temperatureKey}
           dailyWeather={dailyWeather}
-          className="md:order-1"
+          className="lg:order-1"
         />
       </div>
     </div>

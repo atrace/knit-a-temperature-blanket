@@ -56,7 +56,6 @@ const ColourKey = ({
   temperatureRange,
   updateRange,
   resetRanges,
-  ...props
 }: ColourKeyProps) => {
   const rows = temperatureRange.map((range, index) => (
     <ColourKeyRow
@@ -71,34 +70,32 @@ const ColourKey = ({
   const gridTemplate = getGridTemplate(rows.length);
 
   return (
-    <div {...props}>
-      <div
-        key={`grid-container`}
-        className="grid max-w-3xl p-3"
-        style={{
-          gridTemplateAreas: gridTemplate,
-        }}
+    <div
+      key={`grid-container`}
+      className="grid max-w-3xl p-3"
+      style={{
+        gridTemplateAreas: gridTemplate,
+      }}
+    >
+      <h2
+        className={`text-key-text rounded-tl-xl border-key-outline bg-key-background border-${borderSize} border-r-0 px-4 py-1`}
+        style={{ gridArea: "title", borderBottomStyle: "double" }}
       >
-        <h2
-          className={`bg-key-background text-key-text border-key-outline rounded-tl-xl border-${borderSize} border-r-0 px-4 py-1`}
-          style={{ gridArea: "title", borderBottomStyle: "double" }}
-        >
-          Temperature colour key
-        </h2>
-        <LinkButton
-          onClick={resetRanges}
-          className={`bg-key-background text-key-text text-sm border-${borderSize} border-key-outline border-x-0`}
-          style={{ gridArea: "resetButton", borderBottomStyle: "double" }}
-        >
-          reset
-        </LinkButton>
-        <div
-          className={`bg-key-background max-w-8 rounded-tr-xl border-${borderSize} border-l-0`}
-          style={{ gridArea: "corner", borderBottomStyle: "double" }}
-        />
-        {rows}
-        <Footer />
-      </div>
+        Temperature colour key
+      </h2>
+      <LinkButton
+        onClick={resetRanges}
+        className={`text-key-text bg-key-background text-sm border-${borderSize} border-x-0 border-key-outline`}
+        style={{ gridArea: "resetButton", borderBottomStyle: "double" }}
+      >
+        reset
+      </LinkButton>
+      <div
+        className={`max-w-8 rounded-tr-xl bg-key-background border-${borderSize} border-l-0`}
+        style={{ gridArea: "corner", borderBottomStyle: "double" }}
+      />
+      {rows}
+      <Footer />
     </div>
   );
 };
