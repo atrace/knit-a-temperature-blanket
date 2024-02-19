@@ -41,6 +41,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - [x] Display pattern result alongside pretty colour visualisation of blanket
 - [ ] Make pretty colour key frame a more reusable component to make other pretty keys e.g. location frame (will need to rework header and footer to be less grid locked to content :/)
 - [ ] Parse (don't validate) local storage and query param temperature keys
+- [x] MVP printable knitting instructions
 - [ ] Export knitting pattern to print
 - [ ] Add line of previous progress e.g. already knitted january, just focus on pattern for feb - march.
 - [ ] About or home page explaining a temperature blanket
@@ -53,6 +54,13 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ### Sneak Peek
 
 ![Screenshot of the web app running locally on different size browser screens, including an iPhone SE](public/sneak_peek.png)
+
+#### Print a pattern
+
+A printable version of the pattern (default colours only so far) is available at [/print-a-pattern](http://localhost:3000/print-a-pattern) 
+
+![Text representation of a temperature blanket pattern](public/print_a_pattern.png)
+![Preview of version to be printed](public/no_really_you_can_print_it.png)
 
 
 ## Resources

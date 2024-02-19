@@ -83,7 +83,7 @@ const Home = ({ dailyWeather }: HomeProps) => {
           />
         </div>
         <Pattern
-          temperatureRange={temperatureKey}
+          temperatureKey={temperatureKey}
           dailyWeather={dailyWeather}
           className="grow lg:order-1"
         />

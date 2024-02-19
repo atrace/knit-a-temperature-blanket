@@ -7,14 +7,10 @@ import { DailyWeather } from "../lib/openmeteo";
 
 interface PatternProps extends React.ComponentProps<"table"> {
   dailyWeather: DailyWeather[];
-  temperatureRange: TemperatureRange[];
+  temperatureKey: TemperatureRange[];
 }
 
-const Pattern = ({
-  dailyWeather,
-  temperatureRange,
-  ...props
-}: PatternProps) => {
+const Pattern = ({ dailyWeather, temperatureKey, ...props }: PatternProps) => {
   //TODO:  Make text item generator generic to allow extra fields to be added easily
   const rows = dailyWeather.map((todaysWeather) => {
     // Most recent 2 days come back as NaN :thonk:
@@ -23,7 +19,7 @@ const Pattern = ({
     const date = todaysWeather.datetime.toDateString().slice(4, 10);
 
     const { colour } = getColourForTemperature(
-      temperatureRange,
+      temperatureKey,
       todaysWeather.temperature2mMean,
     );
 

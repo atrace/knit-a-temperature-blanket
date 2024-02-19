@@ -19,13 +19,13 @@ export const defaultTemperatureKey: TemperatureRange[] = [
 ];
 
 export const getColourForTemperature = (
-  temperatureRange: TemperatureRange[],
+  temperatureKey: TemperatureRange[],
   temperature: number,
 ) => {
   const integerTemperature = Math.round(temperature);
   let counter = 0;
-  while (counter < temperatureRange.length) {
-    const range = temperatureRange[counter];
+  while (counter < temperatureKey.length) {
+    const range = temperatureKey[counter];
     if (integerTemperature >= range.min && integerTemperature <= range.max) {
       return { colour: range.colour, colourName: range.colourName };
     }
