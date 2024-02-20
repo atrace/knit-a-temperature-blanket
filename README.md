@@ -42,8 +42,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - [ ] Make pretty colour key frame a more reusable component to make other pretty keys e.g. location frame (will need to rework header and footer to be less grid locked to content :/)
 - [x] Parse (don't validate) local storage and query param temperature keys
 - [x] MVP printable knitting instructions
-- [ ] Export knitting pattern to print
-- [ ] Share state between pages to allow custom patterns to be printed
+- [x] Export customisable knitting pattern to print
+- [x] Share state between pages to allow custom patterns to be printed
 - [ ] Add line of previous progress e.g. already knitted january, just focus on pattern for feb - march.
 - [ ] About or home page explaining a temperature blanket
 - [ ] Auto-generate temperature ranges based on previous years' data

@@ -64,13 +64,16 @@ const Home = ({ dailyWeather }: HomeProps) => {
 
   return (
     <div className="mx-auto px-5 md:max-w-3xl lg:max-w-screen-xl">
-      <div>
-        <Link href={getSharableURL(temperatureKey)}>share your blanket</Link>
-      </div>
+      <Link href={getSharableURL(temperatureKey)}>share blanket</Link>
+
+      <Link className="mx-3" href={"/print-a-pattern"}>
+        print pattern
+      </Link>
+
       <div className="flex flex-col justify-center lg:flex-row">
         <div className="lg:order-2 lg:shrink-0">
           <ColourKey
-            temperatureRange={temperatureKey}
+            temperatureKey={temperatureKey}
             updateRange={updateRange}
             resetRanges={resetToDefaultKey}
           />

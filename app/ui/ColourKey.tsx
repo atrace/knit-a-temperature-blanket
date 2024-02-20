@@ -11,7 +11,7 @@ import LinkButton from "./LinkButton";
 const borderSize = 4;
 
 interface ColourKeyProps extends React.ComponentProps<"div"> {
-  temperatureRange: TemperatureKey;
+  temperatureKey: TemperatureKey;
   updateRange: (
     range: TemperatureRange,
     newValues: Partial<TemperatureRange>,
@@ -39,13 +39,13 @@ export const getGridTemplate = (rowCount: number) => {
 const Footer = () => (
   <>
     <div
-      className={`bg-key-background border-key-outline rounded-bl-xl border-${borderSize} border-r-0 border-t-0 p-1`}
+      className={`rounded-bl-xl border-key-outline bg-key-background border-${borderSize} border-r-0 border-t-0 p-1`}
       style={{
         gridArea: "footer",
       }}
     />
     <div
-      className={`bg-key-outline border-key-outline max-w-8 rounded-br-xl border-${borderSize} border-l-0 border-t-0`}
+      className={`max-w-8 rounded-br-xl border-key-outline bg-key-outline border-${borderSize} border-l-0 border-t-0`}
       style={{
         gridArea: "footer-corner",
       }}
@@ -56,11 +56,11 @@ const Footer = () => (
 );
 
 const ColourKey = ({
-  temperatureRange,
+  temperatureKey,
   updateRange,
   resetRanges,
 }: ColourKeyProps) => {
-  const rows = temperatureRange.map((range, index) => (
+  const rows = temperatureKey.map((range, index) => (
     <ColourKeyRow
       key={range.min}
       range={range}

@@ -1,18 +1,26 @@
+"use client";
 import {
-  //   TemperatureRange,
   defaultTemperatureKey,
   getColourForTemperature,
 } from "@/lib/getColourForTemperature";
 import { DailyWeather } from "@/lib/openmeteo";
+import { parseTemperatureKey } from "@/lib/parseTemperatureKey";
+import { useSearchParams } from "next/navigation";
 
 interface PrintablePatternProps {
   dailyWeather: DailyWeather[];
-  // TODO: pass this in somehow - read from local storage??
-  //   temperatureKey: TemperatureKey;
 }
 
 const PrintablePattern = ({ dailyWeather }: PrintablePatternProps) => {
-  const temperatureKey = defaultTemperatureKey;
+  let temperatureKey = defaultTemperatureKey;
+  const sharedTemperatureKey = useSearchParams().get("temperatureKey");
+  if (!!sharedTemperatureKey) {
+    temperatureKey = parseTemperatureKey(sharedTemperatureKey);
+  } else {
+    temperatureKey = parseTemperatureKey(
+      localStorage.getItem("temperatureKey"),
+    );
+  }
 
   let currentColour = "";
   let currentColourCount = 0;

@@ -1,13 +1,14 @@
 import { getWeather } from "@/lib/openmeteo";
+import Link from "@/ui/Link";
 import PrintablePattern from "@/ui/print-a-pattern/PrintablePattern";
-import React from "react";
 
 const PrintAPattern = async () => {
   const dailyWeather = await getWeather();
 
   return (
     <main>
-      <p>Only with the default temp range so far - no custom colours :(</p>
+      <Link href={"/"}>back home</Link>
+      <p>Here&apos;s a customisable printable pattern!</p>
       <br />
       <PrintablePattern dailyWeather={dailyWeather} />
     </main>
