@@ -8,7 +8,6 @@ import {
 import ColourKeyRow from "./ColourKeyRow";
 import LinkButton from "./LinkButton";
 
-const borderSize = 4;
 
 interface ColourKeyProps extends React.ComponentProps<"div"> {
   temperatureKey: TemperatureKey;
@@ -39,13 +38,13 @@ export const getGridTemplate = (rowCount: number) => {
 const Footer = () => (
   <>
     <div
-      className={`rounded-bl-xl border-key-outline bg-key-background border-${borderSize} border-r-0 border-t-0 p-1`}
+      className={`rounded-bl-xl border-4 border-r-0 border-t-0 border-key-outline bg-key-background p-1`}
       style={{
         gridArea: "footer",
       }}
     />
     <div
-      className={`max-w-8 rounded-br-xl border-key-outline bg-key-outline border-${borderSize} border-l-0 border-t-0`}
+      className={`max-w-8 rounded-br-xl border-4 border-l-0 border-t-0 border-key-outline bg-key-outline`}
       style={{
         gridArea: "footer-corner",
       }}
@@ -66,7 +65,6 @@ const ColourKey = ({
       range={range}
       rowIndex={index}
       updateRange={updateRange}
-      borderWidth={borderSize}
     />
   ));
 
@@ -81,20 +79,20 @@ const ColourKey = ({
       }}
     >
       <h2
-        className={`text-key-text rounded-tl-xl border-key-outline bg-key-background border-${borderSize} border-r-0 px-4 py-1`}
+        className={`text-key-text rounded-tl-xl border-4 border-r-0 border-key-outline bg-key-background px-4 py-1`}
         style={{ gridArea: "title", borderBottomStyle: "double" }}
       >
         Temperature colour key
       </h2>
       <LinkButton
         onClick={resetRanges}
-        className={`text-key-text bg-key-background text-sm border-${borderSize} border-x-0 border-key-outline`}
+        className={`text-key-text border-4 border-x-0 border-key-outline bg-key-background text-sm`}
         style={{ gridArea: "resetButton", borderBottomStyle: "double" }}
       >
         reset
       </LinkButton>
       <div
-        className={`max-w-8 rounded-tr-xl bg-key-background border-${borderSize} border-l-0`}
+        className={`max-w-8 rounded-tr-xl border-4 border-l-0 bg-key-background`}
         style={{ gridArea: "corner", borderBottomStyle: "double" }}
       />
       {rows}

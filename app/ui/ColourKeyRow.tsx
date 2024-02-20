@@ -13,15 +13,9 @@ interface ColourKeyRowProps {
     range: TemperatureRange,
     newValues: Partial<TemperatureRange>,
   ) => void;
-  borderWidth: number;
 }
 
-const ColourKeyRow = ({
-  range,
-  rowIndex,
-  updateRange,
-  borderWidth,
-}: ColourKeyRowProps) => {
+const ColourKeyRow = ({ range, rowIndex, updateRange }: ColourKeyRowProps) => {
   const [editingRange, setEditingRange] = useState(false);
 
   const backgroundColour = "white";
@@ -33,7 +27,7 @@ const ColourKeyRow = ({
   return (
     <>
       <p
-        className={`${baseClasses} border-key-outline border-l-${borderWidth} text-right`}
+        className={`${baseClasses} border-l-4 border-key-outline text-right`}
         style={{
           gridArea: `minimum-${rowIndex}`,
         }}
@@ -91,7 +85,7 @@ const ColourKeyRow = ({
         <>
           <div
             style={{
-              borderLeftWidth: borderWidth,
+              borderLeftWidth: 4,
               gridArea: `colourPicker-${rowIndex}`,
             }}
             className="flex justify-end px-4"
