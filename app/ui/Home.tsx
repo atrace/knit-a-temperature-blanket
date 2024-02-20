@@ -1,7 +1,9 @@
 "use client";
+import { parseTemperatureKey } from "@/lib/parseTemperatureKey";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import {
+  TemperatureKey,
   TemperatureRange,
   defaultTemperatureKey,
 } from "../lib/getColourForTemperature";
@@ -10,7 +12,7 @@ import ColourKey from "./ColourKey";
 import Link from "./Link";
 import Pattern from "./Pattern";
 
-const getSharableURL = (temperatureKey: TemperatureRange[]) => {
+const getSharableURL = (temperatureKey: TemperatureKey) => {
   const queryParam = encodeURIComponent(JSON.stringify(temperatureKey));
   return "?temperatureKey=" + queryParam;
 };
@@ -20,9 +22,9 @@ interface HomeProps {
 }
 
 const Home = ({ dailyWeather }: HomeProps) => {
-  const [temperatureKey, setTemperatureKey] = useState<TemperatureRange[]>();
+  const [temperatureKey, setTemperatureKey] = useState<TemperatureKey>();
 
-  const updateAllRanges = (newTemperatureKey: TemperatureRange[]) => {
+  const updateAllRanges = (newTemperatureKey: TemperatureKey) => {
     setTemperatureKey(newTemperatureKey);
     localStorage.setItem("temperatureKey", JSON.stringify(newTemperatureKey));
   };
@@ -50,20 +52,11 @@ const Home = ({ dailyWeather }: HomeProps) => {
 
   useEffect(() => {
     if (!!sharedTemperatureKey) {
-      setTemperatureKey(JSON.parse(sharedTemperatureKey));
+      setTemperatureKey(parseTemperatureKey(sharedTemperatureKey));
     } else {
-      let localTemperatureKey;
-      localTemperatureKey = localStorage.getItem("temperatureKey");
-
-      if (
-        typeof localTemperatureKey === "string" &&
-        localTemperatureKey.length !== 0
-      ) {
-        const parsedTemperatureKey = JSON.parse(localTemperatureKey);
-        if (!!parsedTemperatureKey) {
-          updateAllRanges(parsedTemperatureKey);
-        }
-      }
+      updateAllRanges(
+        parseTemperatureKey(localStorage.getItem("temperatureKey")),
+      );
     }
   }, [setTemperatureKey, sharedTemperatureKey]);
 

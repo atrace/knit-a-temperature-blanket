@@ -1,13 +1,13 @@
 import React from "react";
 import {
-  TemperatureRange,
+  TemperatureKey,
   getColourForTemperature,
 } from "../lib/getColourForTemperature";
 import { DailyWeather } from "../lib/openmeteo";
 
 interface PatternProps extends React.ComponentProps<"table"> {
   dailyWeather: DailyWeather[];
-  temperatureKey: TemperatureRange[];
+  temperatureKey: TemperatureKey;
 }
 
 const Pattern = ({ dailyWeather, temperatureKey, ...props }: PatternProps) => {

@@ -8,7 +8,7 @@ import { DailyWeather } from "@/lib/openmeteo";
 interface PrintablePatternProps {
   dailyWeather: DailyWeather[];
   // TODO: pass this in somehow - read from local storage??
-  //   temperatureKey: TemperatureRange[];
+  //   temperatureKey: TemperatureKey;
 }
 
 const PrintablePattern = ({ dailyWeather }: PrintablePatternProps) => {

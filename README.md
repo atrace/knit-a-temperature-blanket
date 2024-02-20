@@ -40,9 +40,10 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - [x] Make key creator a pretty visual experience i.e. UX to create the above pictured card key with yarn swatches.
 - [x] Display pattern result alongside pretty colour visualisation of blanket
 - [ ] Make pretty colour key frame a more reusable component to make other pretty keys e.g. location frame (will need to rework header and footer to be less grid locked to content :/)
-- [ ] Parse (don't validate) local storage and query param temperature keys
+- [x] Parse (don't validate) local storage and query param temperature keys
 - [x] MVP printable knitting instructions
 - [ ] Export knitting pattern to print
+- [ ] Share state between pages to allow custom patterns to be printed
 - [ ] Add line of previous progress e.g. already knitted january, just focus on pattern for feb - march.
 - [ ] About or home page explaining a temperature blanket
 - [ ] Auto-generate temperature ranges based on previous years' data
@@ -83,6 +84,8 @@ This project was built with NextJS following the following guides:
 - Using Tailwind CSS https://annadeveloper.medium.com/building-a-responsive-website-with-next-js-and-tailwind-css-from-scratch-4d7f7e9916fe
 - React Context https://react.dev/learn/passing-data-deeply-with-context#step-1-create-the-context
 - Typing React component props https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/basic_type_example#useful-react-prop-type-examples
+- Parse, don't validate (an olde favourite) https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/
+
 
 ### Troubleshooting for a future me
 

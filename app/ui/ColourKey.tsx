@@ -1,14 +1,17 @@
 "use client";
 
 import React from "react";
-import { TemperatureRange } from "../lib/getColourForTemperature";
+import {
+  TemperatureKey,
+  TemperatureRange,
+} from "../lib/getColourForTemperature";
 import ColourKeyRow from "./ColourKeyRow";
 import LinkButton from "./LinkButton";
 
 const borderSize = 4;
 
 interface ColourKeyProps extends React.ComponentProps<"div"> {
-  temperatureRange: TemperatureRange[];
+  temperatureRange: TemperatureKey;
   updateRange: (
     range: TemperatureRange,
     newValues: Partial<TemperatureRange>,
