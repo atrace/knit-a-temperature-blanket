@@ -63,6 +63,12 @@ A printable version of the pattern (default colours only so far) is available at
 ![Text representation of a temperature blanket pattern](public/print_a_pattern.png)
 ![Preview of version to be printed](public/no_really_you_can_print_it.png)
 
+#### Browser compatible
+
+Fun and fancy header now responsive for browsers with different text-wrap compatibilities.
+
+![Desktop views of the fun header in Firefox, Safari, and Chrome](<public/desktop_header_compatiblity.png>)
+![Mobile views of the fun header in Firefox, Safari, and Chrome](<public/mobile_header_compatiblity.png>)
 
 ## Resources
 
@@ -85,7 +91,8 @@ This project was built with NextJS following the following guides:
 - React Context https://react.dev/learn/passing-data-deeply-with-context#step-1-create-the-context
 - Typing React component props https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/basic_type_example#useful-react-prop-type-examples
 - Parse, don't validate (an olde favourite) https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/
-
+- Array into string union type https://stackoverflow.com/a/45486495
+- Using a string union as a key for an object https://stackoverflow.com/a/57791670
 
 ### Troubleshooting for a future me
 
@@ -110,3 +117,4 @@ Your changes should come through and you can now revert the className change.
 
 - SVG to react component converter https://react-svgr.com/playground/
 - supersan for a simple HEX colour darkener https://stackoverflow.com/a/57401891
+- My favourite RegEx tool https://regex101.com/
