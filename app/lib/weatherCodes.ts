@@ -1,6 +1,6 @@
 // Extracted from https://www.nodc.noaa.gov/archive/arc0021/0002199/1.1/data/0-data/HTML/WMO-CODE/WMO4677.HTM
 
-export const wmoCode: { [key: number]: string } = {
+export const weatherCode: { [key: number]: string } = {
   // ww = 00-49 	No precipitation at the station at the time of observation
   // ww = 00-19 	No precipitation, fog, ice fog (except for 11 and 12), duststorm, sandstorm, drifting or blowing snow at the station* at the time of observation or, except for 09 and 17, during the preceding hour
   0: "Cloud development not observed or not observable ",
@@ -110,5 +110,5 @@ export const wmoCode: { [key: number]: string } = {
   96: "Thunderstorm, slight or moderate, with hail",
   97: "Thunderstorm, heavy, without hail",
   98: "Thunderstorm combined with duststorm or sandstorm at time of observation",
-  99: "Thunderstorm, heavy, with hail"
+  99: "Thunderstorm, heavy, with hail",
 };

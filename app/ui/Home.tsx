@@ -12,7 +12,7 @@ import ColourKey from "./ColourKey";
 import Link from "./Link";
 import Pattern from "./Pattern";
 
-const getSharableURL = (temperatureKey: TemperatureKey) => {
+const getSharableQueryParam = (temperatureKey: TemperatureKey) => {
   const queryParam = encodeURIComponent(JSON.stringify(temperatureKey));
   return "?temperatureKey=" + queryParam;
 };
@@ -52,7 +52,7 @@ const Home = ({ dailyWeather }: HomeProps) => {
 
   useEffect(() => {
     if (!!sharedTemperatureKey) {
-      setTemperatureKey(parseTemperatureKey(sharedTemperatureKey));
+      updateAllRanges(parseTemperatureKey(sharedTemperatureKey));
     } else {
       updateAllRanges(
         parseTemperatureKey(localStorage.getItem("temperatureKey")),
@@ -64,7 +64,7 @@ const Home = ({ dailyWeather }: HomeProps) => {
 
   return (
     <div className="mx-auto px-5 md:max-w-3xl lg:max-w-screen-xl">
-      <Link href={getSharableURL(temperatureKey)}>share blanket</Link>
+      <Link href={getSharableQueryParam(temperatureKey)}>share blanket</Link>
 
       <Link className="mx-3" href={"/print-a-pattern"}>
         print pattern
