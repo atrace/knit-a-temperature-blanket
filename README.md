@@ -39,7 +39,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - [x] Make fun header responsive
 - [x] Make key creator a pretty visual experience i.e. UX to create the above pictured card key with yarn swatches.
 - [x] Display pattern result alongside pretty colour visualisation of blanket
-- [ ] Make pretty colour key frame a more reusable component to make other pretty keys e.g. location frame (will need to rework header and footer to be less grid locked to content :/)
+- [ ] Make a location frame
 - [x] Parse (don't validate) local storage and query param temperature keys
 - [x] MVP printable knitting instructions
 - [x] Export customisable knitting pattern to print
